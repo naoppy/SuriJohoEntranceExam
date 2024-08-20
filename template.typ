@@ -82,3 +82,54 @@
     let mycolor = rgb(191,135,0)
     colored_block(mycolor, emoji.warning + "注意", content)
 }
+
+/*
+HOW TO USE
+
+#align(
+  center,
+  opt_problem(
+    $ sum_(j=1)^m w_j $,
+    maximize: false,
+    variables: $ P in RR^(d times d) $,
+    $ P^T P = I $,
+    $ P^T P = "ABCDEFGIJLETSGOOO" $,
+  )
+)
+*/
+#let opt_problem(
+    objective-func,
+    maximize: true,
+    variables: none,
+    ..constraints,
+) = {
+    let c = if maximize {
+            "maximize"
+        } else {
+            "minimize"
+        }
+    block(
+        // fill: red, // for debug
+        stack(
+            dir: ttb,
+            spacing: 0.5em,
+            stack(
+                dir: ltr,
+                spacing: 0.8em,
+                align(horizon + left, math.attach(math.limits(c), b: variables)),objective-func,
+            ),
+            stack(
+                dir: ltr,
+                spacing: 0.8em,
+                align(horizon + left, "subject to"),
+                stack(
+                    dir: ttb,
+                    spacing: 0.4em,
+                    ..constraints.pos(),
+                )
+            )
+        ),
+    )
+}
+
+#let diag = math.op("diag", limits: false)
