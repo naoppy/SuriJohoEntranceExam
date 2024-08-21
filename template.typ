@@ -1,55 +1,6 @@
 // typstファイルで読み込むテンプレートファイル
 #import emoji
 
-#let mytemplate(
-    problem_year, // if you had a exam in Aug 2023, 2024 is good
-    problem_num, // 1-5 is fine
-    author, // writer's name
-    doc
-    ) = {
-    set page(
-        paper: "a4",
-        margin: (x: 25mm, y: 25mm),
-        columns: 1,
-        numbering: "1 / 1",
-        number-align: center + bottom,
-    )
-
-    set par(
-        justify: true,
-        // first-line-indent: 1em,
-    )
-
-    set document(
-        author: author, 
-        date: auto,
-        title: [#problem_year;年第#problem_num;問],
-    )
-    
-    // 数式のフォント
-    show math.equation: set text(font: "New Computer Modern Math")
-
-    // 日本語の文字は原ノ味明朝
-    let jp_font = "Harano Aji Mincho"
-    show regex("[\p{scx:Han}\p{scx:Hira}\p{scx:Kana}]"): set text(
-        font: jp_font, 
-        lang: "ja", 
-    )
-
-    set heading(numbering: none)
-    show heading.where(level: 2): set text(size: 14pt)
-
-    heading(
-        text([#problem_year;年 第#problem_num;問], font: jp_font, size: 20pt), numbering: none,
-    )
-
-    doc
-}
-/*
-#let green = rgb(43,99,0)
-#let yellow = rgb(104,81,4)
-#let red = rgb(109,3,3)
-*/
 #let colored_block(
     color,
     title,
@@ -133,3 +84,87 @@ HOW TO USE
 }
 
 #let diag = math.op("diag", limits: false)
+
+#let rate(
+    kind, // e.g. 線形代数, 確率
+    difficulty, // E, N, H, L is fine
+) = {
+    let s = if regex("(?i)\b(e|easy)\b") in difficulty {
+        "Easy"
+    } else if regex("(?i)\b(n|normal)\b") in difficulty {
+        "Normal"
+    } else if regex("(?i)\b(h|hard)\b") in difficulty {
+        "Hard"
+    } else {
+        "Lunatic"
+    }
+    stack(
+        dir: ttb,
+        spacing: 0.5em,
+        text(weight: "semibold", "ジャンル: " + kind),
+        text(weight: "semibold", "難易度: " + s)
+    )
+    
+}
+
+#let mytemplate(
+    problem_year, // if you had a exam in Aug 2023, 2024 is good
+    problem_num, // 1-5 is fine
+    author, // writer's name
+    kind, // e.g. 線形代数, 解析、確率
+    difficulty, // easy, normal, hard, lunatic is fine
+    doc
+    ) = {
+    set page(
+        paper: "a4",
+        margin: (x: 25mm, y: 25mm),
+        columns: 1,
+        numbering: "1 / 1",
+        number-align: center + bottom,
+    )
+
+    set par(
+        justify: true,
+        // first-line-indent: 1em,
+    )
+
+    set document(
+        author: author, 
+        date: auto,
+        title: [#problem_year;年第#problem_num;問],
+    )
+    
+    // 数式のフォント
+    show math.equation: set text(font: "New Computer Modern Math")
+
+    // 日本語の文字は原ノ味明朝
+    let jp_font = "Harano Aji Mincho"
+    show regex("[\p{scx:Han}\p{scx:Hira}\p{scx:Kana}]"): set text(
+        font: jp_font, 
+        lang: "ja", 
+    )
+
+    set heading(numbering: none)
+    show heading.where(level: 2): set text(size: 14pt)
+
+    stack(
+        dir: ltr,
+        align(
+            horizon + left, 
+            heading(
+                text([#problem_year;年 第#problem_num;問], font: jp_font, size: 20pt),
+                numbering: none
+            )
+        ),
+        align(
+            horizon + right,
+            rate(kind, difficulty)
+        )
+    )
+    /*
+    heading(
+        text([#problem_year;年 第#problem_num;問], font: jp_font, size: 20pt), numbering: none,
+    )*/
+
+    doc
+}

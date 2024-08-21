@@ -1,5 +1,5 @@
 #import "../../template.typ": mytemplate, overview, warning, opt_problem, diag
-#show: doc => mytemplate(2024, 1, "Naoki Otani", doc)
+#show: doc => mytemplate(2024, 1, "Naoki Otani", "線形代数", "easy", doc)
 
 #overview[
   フロベニウスノルムの2乗とtraceの関係
