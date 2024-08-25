@@ -107,6 +107,8 @@ HOW TO USE
     
 }
 
+#let numeq = math.equation.with(numbering: "(1)", block: true, number-align: bottom, supplement: "式")
+
 #let mytemplate(
     problem_year, // if you had a exam in Aug 2023, 2024 is good
     problem_num, // 1-5 is fine
