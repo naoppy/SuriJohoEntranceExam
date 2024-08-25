@@ -13,6 +13,8 @@ $ dv(E, t) &= 2(t+1)(f(x) - f(x^*)) + (t+1)^2 grad f(x) dot.op dv(vb(x), t) + 4(
 &= -2(t+1)(f(x^*) - f(x) - (x^*-x)dot.op grad f(x))
  $
  ここで $f$ は微分可能な凸関数より、勾配不等式 #numeq($ f(y) >= f(x) + (y-x) dot.op grad f(x) quad forall x, y $) <conv1d> を満たすので、$dv(E,t) <= 0$ である。
+ #let ref_conv1d = link(<conv1d>, "勾配不等式")
+
 
  定数 $C$ を考える。 
  $ (t+1)^2(f(x)-f(x^*)) &= E(t) - 2norm(v(t)-x^*)_2^2\
@@ -45,17 +47,18 @@ $ dpk(E, k) &= dp(((h k + 1)^2))(f(x^(k+1) - f(x^*))) + (h k + 1)^2 dp((f(x^k) -
 &quad +4(v^(k+1)-x^*) dot.op (-s/4 grad f(x^(k+1))) - 2h norm(dpk(v, k))_2^2 \
 $
 途中で $s := (2h k + h + 2) = dp(((h k + 1)^2))$ と置いた。
-さて、@conv1d より $ f(x^((k+1))) - f(x^((k))) <= (x^((k+1)) - x^((k))) dot.op grad f(x^((k+1))) = h dpkw(x, k) dot.op grad f(x^((k+1))) $ なので、
+さて、#ref_conv1d より $ f(x^((k+1))) - f(x^((k))) <= (x^((k+1)) - x^((k))) dot.op grad f(x^((k+1))) = h dpkw(x, k) dot.op grad f(x^((k+1))) $ なので、
 
 $ 
 dpk(E, k) &<= s (f(x^(k+1)) - f(x^*)) + (h k + 1)^2 dpkw(x, k) dot.op grad f(x^((k+1)))  \
 &quad -s(v^(k+1)-x^*) dot.op grad f(x^(k+1)) - 2h norm(dpk(v, k))_2^2 \
+&dp((x^((k)))) "の関係式" (**) "を代入して、" #v(2.5em) \
 &= s (f(x^(k+1)) - f(x^*)) + s (v^((k+1)) - x^((k+1))) dot.op grad f(x^((k+1))) \
 &quad -s(v^(k+1)-x^*) dot.op grad f(x^(k+1)) - 2h norm(dpk(v, k))_2^2 \
 &= s(f(x^(k+1)) - f(x^*) + (x^* - x^((k+1))) dot.op grad f(x^((k_1)))) - 2h norm(dpk(v, k))_2^2 \
 &<= 0
 $
-最後にも @conv1d を使った。解く時は (1) のステップを再現するようにして解けばよい。
+最後にも #ref_conv1d を使った。解く時は (1) のステップを再現するようにして解けばよい。
 
 == (3)
 (1) と同じ方針でよい。
