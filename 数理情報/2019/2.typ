@@ -1,6 +1,6 @@
 #import "../../template.typ": mytemplate, overview, warning, opt_problem
 #import "@preview/physica:0.9.3": *
-#show: doc => mytemplate(2019, 1, "Naoki Otani", "確率", "hard", doc)
+#show: doc => mytemplate(2019, 2, "Naoki Otani", "確率", "hard", doc)
 
 #overview[
   とにかく計算が重く、複雑な問題。解かせる気がないわけではないので、順当に難しい問題。
