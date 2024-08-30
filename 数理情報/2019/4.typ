@@ -2,7 +2,7 @@
 #show: doc => mytemplate(2019, 4, "Naoki Otani", "解析", "easy", doc)
 
 #overview[
-  行列指数関数についての問題。
+  行列指数関数についての問題。誘導が丁寧で方針で迷うことは無い。
 ]
 
 == (1)
@@ -54,6 +54,26 @@ $
 一見難しそうだが、ただ代入するだけである。$A, B$ は可換とは限らないことに注意する ($e^(A + B) != e^A e^B$)。これは簡単すぎるので解答は省略する。
 
 == (4)
+(2) と比べることで、$norm(P - Q)$ を上から評価すればよいことがわかる。その評価に (3) を使う。
 
+(3) より、
+$
+  norm(P - Q) &= norm(g((A+B)/m) - g(A/m) - g(B/m) - f(A/m) f(B/m)) \
+  &<= norm(g((A+B)/m)) + norm(g(A/m)) + norm(g(B/m)) + norm(f(A/m) f(B/m)) \
+  &<= 1/m^2 norm(A+B) e^(norm(A+B)/m) + 1/m^2 norm(A)^2 e^(norm(A)/m) + 1/m^2 norm(B)^2 e^(norm(B)/m) + 1/m^2 norm(A) e^(norm(A)/m) norm(B) e^(norm(B)/m) \
+  &= 2/m^2 (norm(A) + norm(B))^2 e^((norm(A) + norm(B))/m) 
+$
+3行目への変形には (1) の不等式を使った。これと (2) よりただちに示される。
 
 == (5)
+解析的には、$x(t) = e^((A+B)t) x(0)$ ではあるが、$e^(A+B)$ の代わりに $e^(A/m) e^(B/m) e^(A/m) e^(B/m) dots.c$ を使うとどうなるのかという問題である。
+
+$
+  norm(x(1) - tilde(x)^(2m)) &= norm(e^(A+B) v - e^(A/m) e^(B/m) dots.c e^(A/m) e^(B/m) v) \
+  &<= norm(e^(A+B)- e^(A/m) e^(B/m) dots.c e^(A/m) e^(B/m)) norm(v) \
+  &= norm(P^m - Q^m) norm(v) \
+  &<= 2/m (norm(A) + norm(B))^2 e^(norm(A) + norm(B)) norm(v)
+$
+よって $m^alpha, thick alpha in (0, 1)$ をかけて $m -> infinity$ をとれば、$norm(x(1) - tilde(x)^(2m)) = 0$。
+
+$m->infinity$ を取るということは分割を細かくすることに相当する。$m^alpha$ を乗じているのは、分割の細かさに関する誤差のオーダーが $O(1/m)$ であることを表している(と思う)。
