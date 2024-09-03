@@ -12,6 +12,7 @@
 
 #overview[
   確率密度を、累積分布関数の表現で考える問題。慣れると簡単ですが、最初は難しいかもしれません。
+  最後の距離はワッサースタイン計量と呼ばれるものの一種です。
 ]
 
 == (1)
@@ -95,9 +96,30 @@ $E[X^2] = integral integral x^2 dif F(x, y) = integral x^2 dif F(x) = integral_0
 上を踏まえたうえで式を展開すると、$E[X Y] <= E[F^(-1) (U) G^(-1) (G)]$ を示せばよいことがわかる。この式は理解しやすい。非負変数の、積の期待値の代わりに、値が大きいところ同士をかけて積分したほうが積分値が大きくなるという自然なことを意味している。
 
 $E[X Y]$ が出てきたので、(2-1) を使って示す方針でいく。
+いや、解けませんが、、、
+
+== (3)
+これは距離にユークリッドノルムを採用した、$p=2$ の場合のワッサースタイン計量 $W_2$ らしい。#link("https://en.wikipedia.org/wiki/Wasserstein_metric#Normal_distributions", text("wikipedia", fill: blue)) に詳しく書いてある。
+
+さて、$E[(F^(-1)(U) - G^(-1)(U))^2]$ を計算したいのだが、$E[F^(-1)(U)G^(-1)(U)]$ の計算をどうすればいいのか困ってしまう。ここで、二つはどちらもガウス分布であることに注目すると、
 $
-  E[X Y] &= integral_0^infinity integral_0^infinity P(X >= x, Y >= y) dif y dif x \
-  &<= integral_0^infinity integral_0^infinity P(X >= x) P(Y >= y) dif y dif x \
-  &= E[F^(-1) (U) G^(-1) (U)]
+  (F^(-1)(U) - mu_1) / sigma_1 = (G^(-1)(U) - mu_2) / sigma_2
 $
-嘘が多いなこれ、ダメだ
+なる関係式が成り立つ。二つの分布をそれぞれ標準正規分布に直したら、同じ値になるため従う。
+これより、$G^(-1)(U) = sigma_2 / sigma_1 (F^(-1)(U) - mu_1) + mu_2$ なので、これを代入して計算すればよい。
+
+$
+  &&W(P_1, P_2)^2 &<= 2sigma_2^2 D(P_1 |#h(0em)| P_2) \
+  <=>&&(mu_1 - mu_2)^2 + (sigma_1 - sigma_2)^2 &<= sigma_2^2 (-1 + log (sigma_2^2 / sigma_1^2) + (sigma_1^2 + (mu_1 - mu_2)^2) / sigma_2^2)
+$
+を示していく。
+式を整理すると、
+$
+  &&(sigma_1 - sigma_2)^2 &<= -sigma_2^2 + sigma_1^2 + sigma_2^2 log (sigma_2^2 / sigma_1^2) \
+  <=>&& 2 sigma_2^2 - 2sigma_1 sigma_2 &<= 2 sigma_2^2 log (sigma_2 / sigma_1) \
+  <=>&& sigma_2 - sigma_1 &<= sigma_2 log (sigma_2 / sigma_1) \
+  <=>&&  0 &<=sigma_2 / sigma_1 log (sigma_2 / sigma_1) - sigma_2 / sigma_1 + 1 \
+$
+となる。最後の式で $sigma_2 / sigma_1 = x > 0$ と置いて、$f(x) = x log x - x + 1$ とすると $f'(x) = log x$ なので、$f(x)$ は $x = 1$ で最小値を取ることがわかる。$f(1) = 0$ なので、不等式が示された。また、等号は $sigma_2 / sigma_1 = 1 <=> sigma_2 = sigma_1$ のときのみである。
+
+ちなみに、ワッサースタイン計量で調べると対数ソボレフノルムとか最適輸送問題とか出てきたので、これは鈴木大慈先生が作問者で間違いなさそう。
