@@ -95,8 +95,18 @@ $E[X^2] = integral integral x^2 dif F(x, y) = integral x^2 dif F(x) = integral_0
 
 上を踏まえたうえで式を展開すると、$E[X Y] <= E[F^(-1) (U) G^(-1) (G)]$ を示せばよいことがわかる。この式は理解しやすい。非負変数の、積の期待値の代わりに、値が大きいところ同士をかけて積分したほうが積分値が大きくなるという自然なことを意味している。
 
-$E[X Y]$ が出てきたので、(2-1) を使って示す方針でいく。
-いや、解けませんが、、、
+(2-1) を使って示す方針でいく。正直この問題はかなり難しい。
+$
+  E[F^(-1) (U) G^(-1) (U)]
+  &= integral integral P{F^(-1) (U) >= x, G^(-1) (U) >= y} thick dif x dif y \
+  &= integral integral P{U >= F(x), U >= G(y)} thick dif x dif y \
+  &= integral integral P{U >= max(F(x),G(y))} thick dif x dif y \
+  &= integral integral 1 - max(F(x),G(y)) thick dif x dif y \
+  &= integral integral min(1 - F(x),1 - G(y)) thick dif x dif y \
+  &= integral integral min(P(X >= x),P(Y >= y)) thick dif x dif y \
+  &= integral integral P(X >= x, Y >= y) thick dif x dif y \
+  &= E[X Y] \
+$
 
 == (3)
 これは距離にユークリッドノルムを採用した、$p=2$ の場合のワッサースタイン計量 $W_2$ らしい。#link("https://en.wikipedia.org/wiki/Wasserstein_metric#Normal_distributions", text("wikipedia", fill: blue)) に詳しく書いてある。
