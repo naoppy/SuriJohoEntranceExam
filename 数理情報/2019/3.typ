@@ -1,4 +1,4 @@
-#import "../../template.typ": mytemplate, overview, warning, opt_problem, numeq
+#import "../../template.typ": mytemplate, overview, warning, opt_problem, numeq, url_link
 #import "@preview/physica:0.9.3": *
 #show: doc => mytemplate(2019, 3, "Naoki Otani", "最適化", "hard", doc)
 
@@ -64,7 +64,13 @@ $
 == (2-2)
 $cal(A)$ が有限集合なら、${B subset cal(A) | B "は線形独立"}$ は有限集合になる。より詳しく、元の数は $2^abs(cal(A))$ で上から抑えられる。$C(cal(B))$ は閉集合なので、閉集合の有限和集合である $C(cal(A))$ は閉集合。
 
-一応、$cal(B)$ が閉集合であることも示す。これは有限生成錐が多面体であり、多面体は閉集合であることから従う (Weyl-Minkowski Theorem)。とするとオーバーパワーなので、もう少し優しい証明の方針を与える。$cal(B)$ のサイズによる帰納法で示す。$n=1$ のとき $C(cal(B))$ は直線で、閉集合。$n=k$ で成り立つとすると、$n=k+1$ で $C(cal(B))$ 内の収束する点列をとる。収束先が $C(cal(B))$ に入っていることを言いたい。$a_1, dots, a_(k+1)$ で展開した係数で考えると、係数ごとに収束先を考えて言える。詳しくは#text(link("http://www.lukoe.com/finance/quantNotes/Polyhedral_cones_.html", "こちら"), fill: blue) を参照。
+一応、$cal(B)$ が閉集合であることも示す。これは有限生成錐が多面体であり、多面体は閉集合であることから従う (Weyl-Minkowski Theorem)。とするとオーバーパワーなので、もう少し優しい証明の方針を与える。
+
+$B$ を生成するベクトルは線形独立なので、非負ベクトル $x$ から $B x$ への線形写像は単射である。線形写像は連続で、写像の値域を $C(cal(B))$ にとると、$x |-> B x, "非負ベクトル" -> C(cal(B))$ は連続な全単射写像になる。
+非負ベクトル全体は閉集合なので、$C(cal(B))$ は閉集合。
+多分これが一番簡潔な証明だと思います。
+
+他の証明方針としては、$cal(B)$ のサイズによる帰納法で示すものがある。$n=1$ のとき $C(cal(B))$ は直線で、閉集合。$n=k$ で成り立つとすると、$n=k+1$ で $C(cal(B))$ 内の収束する点列をとる。収束先が $C(cal(B))$ に入っていることを言いたい。$a_1, dots, a_(k+1)$ で展開した係数で考えると、係数ごとに収束先を考えて言える。詳しくは #url_link("http://www.lukoe.com/finance/quantNotes/Polyhedral_cones_.html", "こちら") を参照。
 
 == (3-1)
 $c^T A lambda = c^T x > 0$ だが、$c^T A <= 0$ かつ $lambda >= 0$ なので矛盾。
