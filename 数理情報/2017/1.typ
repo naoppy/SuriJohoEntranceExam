@@ -6,33 +6,33 @@
   非線形方程式を数値的に解くときなどに大事な概念となる不動点に関する問題。(1)で安定な不動点がなぜ大事かを実感することができる。(2)は高校数学っぽい。幾何的には底が動くときの指数関数と直線の交点を考えることになるが、意外とイメージしにくくて難しい感がある。
 ]
 == (1) 
-$|F^n (x) - macron(x) |$を評価することを考える。
+$|F^n (x) - macron(x)|$ を評価することを考える。
 
-$macron(x)$は安定な不動点なので、
+$macron(x)$ は安定な不動点なので、
   $
-    F(macron(x)) = macron(x)\
-    |f(macron(x))| < 1
+    F(macron(x)) &= macron(x)\
+    |f(macron(x))| &< 1
   $
-関数$x |-> |f(x)| = a^x |log a|$は連続なので、ある開区間$J = (macron(x) - delta, macron(x) + delta)$（$delta > 0$）があって、
+関数 $x |-> |f(x)| = a^x |log a|$ は連続なので、ある開区間 $J = (macron(x) - delta, macron(x) + delta)$（$delta > 0$）があって、
   $
     x in J => |f(x)| < M := (1+|f(macron(x))|)/2 < 1
   $
-$F$は微分可能なので平均値の定理より、$x in J$ならば、
+$F$ は微分可能なので平均値の定理より、$x in J$ ならば、
   $
     |F(x) - macron(x)| &= |F(x) - F(macron(x))|\
     &= |f(macron(x) + theta (x - macron(x)))| |x - macron(x)|\
     &< M |x - macron(x)|\
     &< delta
   $
-ただし、$theta in (0,1)$であり、したがって$macron(x) + theta (x - macron(x)) in J$なので3行目の不等式が言える。
+ただし、$theta in (0,1)$ であり、したがって $macron(x) + theta (x - macron(x)) in J$ なので3行目の不等式が言える。
 
-$x in J => F(x) in J$であることにも注意して、
+$x in J => F(x) in J$ であることにも注意して、
   $
     |F^n(x) - macron(x)| &= |F(F^(n-1) (x) ) - macron(x)|\
     &< M |F^(n-1) (x) - macron(x)|\
     &< M^(n-1) |x - macron(x)|
   $
-故に、$x in J => lim_(n -> infinity) F^n (x) = macron(x)$である。
+故に、$x in J => lim_(n -> infinity) F^n (x) = macron(x)$ である。
 
 
 == (2)
