@@ -90,6 +90,7 @@ HOW TO USE
     )
 }
 
+// physicaにあるので、これはもういらないかも
 #let diag = math.op("diag", limits: false)
 
 #let rate(
@@ -113,6 +114,8 @@ HOW TO USE
     )
     
 }
+
+#let url_link(url, title, color: blue) = link(url, text(title, fill: color))
 
 #let numeq = math.equation.with(numbering: "(1)", block: true, number-align: bottom, supplement: "式")
 

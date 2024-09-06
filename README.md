@@ -14,5 +14,3 @@ Contributionされる際はlatexでも構いません。その場合なるべく
 
 ## 他の有用なリンク Helpful references
 https://github.com/hari64boli64/GraduateSchoolEntranceExamination
-
-https://github.com/mqcmd196/utokyo_ist_math
