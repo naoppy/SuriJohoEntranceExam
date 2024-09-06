@@ -33,6 +33,13 @@
     let mycolor = rgb(191,135,0)
     colored_block(mycolor, emoji.warning + "注意", content)
 }
+#let technique(
+    content,
+    background-color: none,
+) = {
+    let mycolor = rgb(0, 120, 215)
+    colored_block(mycolor, emoji.brain + "テクニック", content)
+}
 
 /*
 HOW TO USE
@@ -83,6 +90,7 @@ HOW TO USE
     )
 }
 
+// physicaにあるので、これはもういらないかも
 #let diag = math.op("diag", limits: false)
 
 #let rate(
@@ -106,6 +114,8 @@ HOW TO USE
     )
     
 }
+
+#let url_link(url, title, color: blue) = link(url, text(title, fill: color))
 
 #let numeq = math.equation.with(numbering: "(1)", block: true, number-align: bottom, supplement: "式")
 
