@@ -60,13 +60,13 @@ $
 
 == (4)
 #technique[
-  対称行列の固有値が実数なのと同じで、歪対称行列の固有値は純虚数。
+  対称行列の固有値が実数なのと同じで、歪対称行列の固有値は純虚数。\
   証明は、歪対称行列 $A$ の固有値 $lambda$ と対応する固有ベクトル $x$ に対し、$x^* A x = lambda norm(x)^2$ の共役転置を取ると、$x^* A^dagger x = - x^* A x= macron(lambda) norm(x)^2$
   より、$lambda = - macron(lambda)$ なので純虚数。
 ]
 
 #technique[
-  行列 $A$ の固有値が $lambda_i$ なら、行列 $I + A$ の固有値は $1 + lambda_i$。
+  行列 $A$ の固有値が $lambda_i$ なら、行列 $I + A$ の固有値は $1 + lambda_i$。\
   証明は、$A x = lambda x => (I + A) x = x + lambda x = (1 + lambda) x$ より。
 ]
 
@@ -89,11 +89,13 @@ $X_(l+1) = Q_(l+1) X_l Q_(l+1)^top$ なので $X_(l+1)$ も一意に定まり、
 したがって任意の $k=1,2,...$ に対して、$X_k, Q_k$ が一意に定まり、$X_k$ は対称行列である。
 
 == (5)
+(3) と同様で、$Q_k$ が直交行列であることを示せればよい。
+
 任意の $k=1,2,...$ に対して、
   $
     D_k &:= Q_k^top Q_k - Q_(k-1)^top Q_(k-1) \
     &= (Q_k - Q_(k-1))^top Q_k + Q_(k-1)^top (Q_k - Q_(k-1))\
-    &= Delta t ((M,X_(k-1)) (Q_k + Q_(k-1))/2 )^top Q_k + Delta t Q_(k-1)^top(M,X_(k-1)) (Q_k + Q_(k-1))/2\
+    &= Delta t ((M,X_(k-1)) (Q_k + Q_(k-1))/2 )^top Q_k + Delta t Q_(k-1)^top　(M,X_(k-1)) (Q_k + Q_(k-1))/2\
     &= - (Delta t)/2 (Q_k^top (M, X_(k-1))Q_k - Q_(k-1)^top (M, X_(k-1)) Q_(k-1))
   $
 $D_k$ は対称かつ歪対称なので $D_k = D_k^top = - D_k$ より $D_k = 0$ である。したがって $Q_k^top Q_k = Q_0^top Q_0 = I$ であり $Q_k$ は直交行列である。\
@@ -105,3 +107,24 @@ $D_k$ は対称かつ歪対称なので $D_k = D_k^top = - D_k$ より $D_k = 0$
     &= matrixdet(lambda I - X_0)
   $
 よって、$X_k$ の固有多項式は $X_0$ の固有多項式と等しいため、$X_k$ は $X_0$ と同じ固有値を持つ。
+
+== (5) 別解
+$Q_k$ が直交行列であることを帰納法で示す。$Q_0$ で満たす。$Q_(k-1)$ が直交行列とする。
+歪対象行列 $Delta t ((M, X_(k-1)))/2$ を $C := Delta t ((M, X_(k-1)))/2$ とおくと、(4) より、
+$
+(I - C)Q_k = (I + C) Q_(k-1)
+$
+が成り立つのと、$(I - C)^top = I + C$ に注意して、
+$
+  (I - C) Q_k ((I - C) Q_k)^top
+  &= (I - C) Q_k Q_k^top (I + C)
+$
+一方で、
+$
+  (I - C) Q_k ((I - C) Q_k)^top &= (I + C)Q_(k-1) ((I + C) Q_(k-1))^top \
+  &= (I + C) Q_(k-1) Q_(k-1)^top (I - C) \
+  &= (I + C) (I - C) \
+  &= (I - C) (I + C) \
+$
+
+$I - C, I + C$ は可逆なので、$Q_k Q_k^top = I$ であり、$Q_k$ は直交行列である。
