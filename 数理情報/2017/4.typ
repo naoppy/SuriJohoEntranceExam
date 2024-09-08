@@ -59,6 +59,17 @@ $
 よって、$X(t)$ の固有多項式は $X_0$ の固有多項式と等しいため、$X(t)$ は $X_0$ と同じ固有値を持つ。
 
 == (4)
+#technique[
+  対称行列の固有値が実数なのと同じで、歪対称行列の固有値は純虚数。
+  証明は、歪対称行列 $A$ の固有値 $lambda$ と対応する固有ベクトル $x$ に対し、$x^* A x = lambda norm(x)^2$ の共役転置を取ると、$x^* A^dagger x = - x^* A x= macron(lambda) norm(x)^2$
+  より、$lambda = - macron(lambda)$ なので純虚数。
+]
+
+#technique[
+  行列 $A$ の固有値が $lambda_i$ なら、行列 $I + A$ の固有値は $1 + lambda_i$。
+  証明は、$A x = lambda x => (I + A) x = x + lambda x = (1 + lambda) x$ より。
+]
+
 帰納法で示す。\
  - $k=0$ のとき $X_0$ は対称で $Q_0 = I$ なのでok。
  - $k=l$（$l=0,1,2,...$）で $X_l, Q_l$ が一意に定まり、$X_l$ が対称行列であるとする。
