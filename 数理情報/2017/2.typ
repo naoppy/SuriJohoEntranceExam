@@ -48,14 +48,19 @@ $n+1$ 回目にコインを投げたとき、$n$ 回目に投げたときから�
 
 
 == (2)別解
-  $lim_(n -> infinity) (H(n))/n$ を求めるときに、チェザロ平均の性質を使ったが、$H(n)$ の表式を具体的に求めるのも実直で良い方法だと思う。
-  $
-    H(n)/(n) =& H(1)/n + + 1/n sum_(k=1)^(n-1) (theta_B + (theta_A - theta_B) p_(k+1))\
-    =& (theta_A + theta_B)/(2n) + (theta_A + theta_B - 2 theta_A theta_B)/(2- theta_A - theta_B) \
-    &- 1/n ((theta_A - theta_B)^2)/(2(2 - theta_A - theta_B)) (theta_A + theta_B -1 - (theta_A + theta_B - 1)^n)/(2 - theta_A - theta_B)\
-    ->& (theta_A + theta_B - 2 theta_A theta_B)/(2- theta_A - theta_B) & (n -> infinity)
-  $
+$lim_(n -> infinity) (H(n))/n$ を求めるときに、チェザロ平均の性質を使ったが、$H(n)$ の表式を具体的に求めるのも実直で良い方法だと思う。
 
+$
+  H(n) =& sum_(k=1)^(n) (theta_B + (theta_A - theta_B) p_k)\
+  =& n theta_B + n (theta_A - theta_B)(1-theta_B)/(2 - theta_A - theta_B) \
+  &- ((theta_A - theta_B)^2)/(2(2 - theta_A - theta_B)) (1 - (theta_A + theta_B - 1)^n)/(1 - (theta_A + theta_B - 1))
+$
+よって、
+$
+  H(n)/n
+  &-> theta_B + (theta_A - theta_B)(1-theta_B)/(2 - theta_A - theta_B) \
+  &= (theta_A + theta_B - 2 theta_A theta_B)/(2- theta_A - theta_B) & (n -> infinity)
+$
 
 == (3)
   $
