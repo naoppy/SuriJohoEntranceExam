@@ -47,7 +47,7 @@ $x in J => F(x) in J$ であることにも注意して、
   $
 より、$g$ の概形は次のようになる。
 #figure(
-  image("5fig/g.png", width: 40%),
+  image("1fig/g.png", width: 40%),
   caption: [$g (x)$ のグラフ。]
 )
 $x = e$ で最大値 $g(e) = e^(1/e)$ をとることと、$g(1/e) = e^(-e)$ であることに注意しておく。\
