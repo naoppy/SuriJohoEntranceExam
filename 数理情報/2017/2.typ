@@ -32,7 +32,7 @@ $k = 1,2,...$に対して、$k$ 回目にコインを投げたとき$k-1$ 回目
   $
 $H(0) = 0$ に注意して、$k = 1,...,n$ で辺々加えると、
   $
-    H(n) = sum_(k=0)^(n) (theta_B + (theta_A - theta_B) p_(k+1))
+    H(n) = sum_(k=1)^(n) (theta_B + (theta_A - theta_B) p_k)
   $
 チェザロ平均の性質：${a_n}_(n>=1) union {alpha} subset RR$ に対して、$n -> infinity$ のとき、
   $
@@ -40,7 +40,7 @@ $H(0) = 0$ に注意して、$k = 1,...,n$ で辺々加えると、
   $
 より、
   $
-    lim_(n -> infinity) (H(n))/n &= lim_(n -> infinity) (theta_B + (theta_A - theta_B) p_(n+1))\
+    lim_(n -> infinity) (H(n))/n &= lim_(n -> infinity) (theta_B + (theta_A - theta_B) p_n)\
     &= theta_B + (theta_A - theta_B) (1 - theta_B)/(2 - theta_A - theta_B)\
     &= (theta_A + theta_B - 2 theta_A theta_B)/(2- theta_A - theta_B)
   $
