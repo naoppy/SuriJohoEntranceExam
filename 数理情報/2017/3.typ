@@ -18,13 +18,13 @@ $0<u<1$ に対して、
   $
 
 == (2)
-$F_X$ は連続なので、
-  $
-    upright(Pr) (B) &= upright(Pr) (X >= F_X^(-1)(p))\
-    &= 1 - upright(Pr) (X < F_X^(-1)(p))\
-    &= 1 - F_X (F_X^(-1) (p))\
-    &= 1 - p
-  $
+$F_X$ は単調増加な右連続関数で、逆関数をもつので、$F_X$ は連続である。よって、$upright(Pr) (X < x) = upright(Pr) (X <= x)$ が成立し、
+$
+  upright(Pr) (B) &= upright(Pr) (X >= F_X^(-1)(p))\
+  &= 1 - upright(Pr) (X < F_X^(-1)(p))\
+  &= 1 - F_X (F_X^(-1) (p))\
+  &= 1 - p
+$
 また、$U = F_X (X)$ は $(0,1)$ 上の一様分布に従うので、
   $
     R[X] &= 1/(1-p) integral_p^1 F_X^(-1) (u) dif u\
